@@ -1,4 +1,7 @@
+import pieces.*;
+
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * Represents the chess board.
@@ -12,43 +15,54 @@ public class Board {
      * Create a new chess board.
      */
     public Board() {
+        /*
         // add pieces
         for (int i = 0; i < 8; i++) {
             // add pawns
-            pieces[1][i] = new Piece(1, i, false, Piece.PieceType.PAWN);
-            pieces[6][i] = new Piece(6, i, true, Piece.PieceType.PAWN);
+            pieces[1][i] = new Pawn(1, i, false);
+            pieces[6][i] = new Pawn(6, i, true);
 
-            // determine which non-pawn piece is on current column
-            Piece.PieceType currentType;
+            // determine which non-pawn pieces are in current column
+            Piece darkPiece, lightPiece;
             switch (i) {
                 case 0:
                 case 7:
-                    currentType = Piece.PieceType.ROOK;
+                    darkPiece = new Rook(0, i, false);
+                    lightPiece = new Rook(7, i, true);
                     break;
                 case 1:
                 case 6:
-                    currentType = Piece.PieceType.KNIGHT;
+                    darkPiece = new Knight(0, i, false);
+                    lightPiece = new Knight(7, i, true);
                     break;
                 case 2:
                 case 5:
-                    currentType = Piece.PieceType.BISHOP;
+                    darkPiece = new Bishop(0, i, false);
+                    lightPiece = new Bishop(7, i, true);
                     break;
                 case 3:
-                    currentType = Piece.PieceType.QUEEN;
+                    darkPiece = new Queen(0, i, false);
+                    lightPiece = new Queen(7, i, true);
                     break;
                 case 4:
-                    currentType = Piece.PieceType.KING;
+                    darkPiece = new King(0, i, false);
+                    lightPiece = new King(7, i, true);
                     break;
                 default:
                     // this shouldn't happen
-                    currentType = Piece.PieceType.PAWN;
+                    darkPiece = new Pawn(0, i, false);
+                    lightPiece = new Pawn(7, i, true);
                     break;
             }
 
             // add non-pawn piece
-            pieces[0][i] = new Piece(0, i, false, currentType);
-            pieces[7][i] = new Piece(0, i, true, currentType);
-        }
+            pieces[0][i] = darkPiece;
+            pieces[7][i] = lightPiece;
+
+        }*/
+
+        pieces[0][0] = new Queen(0, 0, false);
+        System.out.println(pieces[0][0].getValidLocations().size());
     }
 
     /**
@@ -84,10 +98,18 @@ public class Board {
                 }
 
                 g.setColor(current.isWhite() ? Color.GREEN : Color.RED);
-                g.setFont(new Font("Arial", Font.PLAIN, 24));
-                g.drawString(current.getTypeAsString(), j * squareSize + 20, i * squareSize + 50);
+                g.setFont(new Font("Arial", Font.PLAIN, 32));
+                g.drawString(current.getClass().getName().substring(7), j * squareSize + 20, i * squareSize + 50);
             }
         }
 
+        // TODO: testing for valid locs
+        ArrayList<Integer[]> posArr = pieces[0][0].getValidLocations();
+
+        for (Integer[] coord : posArr) {
+            g.setColor(Color.BLUE);
+            g.setStroke(new BasicStroke(4));
+            g.drawRect(coord[1] * squareSize + 20, coord[0] * squareSize + 20, squareSize - 40, squareSize - 40);
+        }
     }
 }
