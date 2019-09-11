@@ -20,14 +20,13 @@ public class Main {
         // set up frame
         frame = new JFrame("Chess");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
 
         // panel to store cards
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
         cardPanel.setPreferredSize(new Dimension(initialSize, initialSize));
         cardPanel.add(new MenuPane(initialSize, initialSize), MENUPANE);
-        cardPanel.add(new ChessPane(initialSize), CHESSPANE);
+        cardPanel.add(new ChessPane(initialSize, initialSize), CHESSPANE);
 
         // add cards to frame
         frame.add(cardPanel);
