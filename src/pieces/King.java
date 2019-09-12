@@ -15,14 +15,14 @@ public class King extends Piece {
         // go row by row
         for (int i = row - 1; i <= row + 1; i++) {
             // check bounds
-            if (row < 0 || row >= 8) {
+            if (i < 0 || i >= 8) {
                 continue;
             }
 
             // go through columns
             for (int j = col - 1; j <= col + 1; j++) {
                 // check bounds
-                if (col < 0 || col >= 8 || (i == row && j == col)) {
+                if (j < 0 || j >= 8 || (i == row && j == col)) {
                     continue;
                 }
 

@@ -23,6 +23,9 @@ public class ChessPane extends JPanel implements MouseListener {
     // piece which is currently selected
     private Piece selectedPiece;
 
+    // represents which squares the selected piece can be moved to
+    private boolean[][] movableSquares = new boolean[8][8];
+
     // size of each square
     private int squareWidth, squareHeight;
     
@@ -154,11 +157,14 @@ public class ChessPane extends JPanel implements MouseListener {
 
             // draw valid move locations
             g2.setColor(Color.GREEN);
-            ArrayList<Integer[]> validMoves = new ArrayList<>();
-            validMoves = getPossibleMoves(row, col);
-            for (Integer[] coord : validMoves) {
-                squareInfo = getSelectionSquareCoords(coord[0], coord[1], SCALE_FACTOR);
-                g2.drawRect(squareInfo[0], squareInfo[1], squareInfo[2], squareInfo[3]);
+            for (int i = 0; i < 8; i++) {
+                for (int j = 0; j < 8; j++) {
+                    // check if this square is a valid move location, if so, draw
+                    if (movableSquares[i][j]) {
+                        squareInfo = getSelectionSquareCoords(i, j, SCALE_FACTOR);
+                        g2.drawRect(squareInfo[0], squareInfo[1], squareInfo[2], squareInfo[3]);
+                    }
+                }
             }
         }
     }
@@ -182,14 +188,22 @@ public class ChessPane extends JPanel implements MouseListener {
     }
 
     /**
-     * Figure out which locations a piece can actually move to, accounting for other pieces, etc.
-     * @param row row of piece to check
-     * @param col column of piece to check
-     * @return ArrayList of coordinates in the form: {{row1, col1}, {row2, col2}, etc.}
+     * Figure out which locations a piece can actually move to, accounting for other pieces, etc. and update the movableSquares array accordingly.
      */
-    private ArrayList<Integer[]> getPossibleMoves(int row, int col) {
+    private void updateMovableSquares() {
+        // reset array each time
+        movableSquares = new boolean[8][8];
+
+        // if there's no piece selected, nothing to update
+        if (selectedPiece == null) {
+            return;
+        }
+
         //TODO: implement this properly
-        return pieces[row][col].getValidLocations();
+        ArrayList<Integer[]> validLocs = selectedPiece.getValidLocations();
+        for (Integer[] coord : validLocs) {
+            movableSquares[coord[0]][coord[1]] = true;
+        }
     }
 
     /**
@@ -199,12 +213,31 @@ public class ChessPane extends JPanel implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         // convert mouse x, mouse y to square on the board
-        int boardX = e.getX() / squareWidth;
-        int boardY = e.getY() / squareHeight;
+        int boardCol = e.getX() / squareWidth;
+        int boardRow = e.getY() / squareHeight;
 
-        // set selectedPiece to piece at this location
-        // its okay if its null
-        selectedPiece = pieces[boardY][boardX];
+        // set selectedPiece to piece at this location, if it exists
+        if (pieces[boardRow][boardCol] != null) {
+            selectedPiece = pieces[boardRow][boardCol];
+            // update movableSquares
+            updateMovableSquares();
+        } else if (selectedPiece != null && movableSquares[boardRow][boardCol]) {             // if there is a piece selected, check if a valid move square was clicked
+            int pieceRow = selectedPiece.getRow();
+            int pieceCol = selectedPiece.getColumn();
+
+            // move piece
+            pieces[pieceRow][pieceCol] = null;
+            pieces[boardRow][boardCol] = selectedPiece;
+            selectedPiece.setPosition(boardRow, boardCol);
+
+            // deselect piece
+            selectedPiece = null;
+            updateMovableSquares();
+        } else {
+            // if neither of above cases are true, deselect piece
+            selectedPiece = null;
+            updateMovableSquares();
+        }
 
         repaint();
     }
