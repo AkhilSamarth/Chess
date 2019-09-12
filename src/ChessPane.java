@@ -6,6 +6,7 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 /**
  * JPanel to contain the chess game.
@@ -143,16 +144,58 @@ public class ChessPane extends JPanel implements MouseListener {
             final double SCALE_FACTOR = 0.8;
 
             g2.setStroke(new BasicStroke(4));
+            g2.setColor(Color.BLUE);
             int row = selectedPiece.getRow();
             int col = selectedPiece.getColumn();
 
-            // calculate position of square
-            //int x = row * squareWidth + (0.5 * squareWidth * SCALE_FACTOR);
+            // get drawing info for selection square
+            int[] squareInfo = getSelectionSquareCoords(row, col, SCALE_FACTOR);
+            g2.drawRect(squareInfo[0], squareInfo[1], squareInfo[2], squareInfo[3]);
 
-            //g2.drawRect(, col * squareHeight + (0.5 * squareHeight * SCALE_FACTOR) , row * squareWidth * SCALE_FACTOR, col * squareHeight * SCALE_FACTOR);
+            // draw valid move locations
+            g2.setColor(Color.GREEN);
+            ArrayList<Integer[]> validMoves = new ArrayList<>();
+            validMoves = getPossibleMoves(row, col);
+            for (Integer[] coord : validMoves) {
+                squareInfo = getSelectionSquareCoords(coord[0], coord[1], SCALE_FACTOR);
+                g2.drawRect(squareInfo[0], squareInfo[1], squareInfo[2], squareInfo[3]);
+            }
         }
     }
 
+    /**
+     * Helper method used to calculate the x, y, width, height of selection squares (squares that appear when a piece is clicked).
+     * @param row row of square to be drawn
+     * @param col column of square to be drawn
+     * @param scale factor by which size of board square is multiplied (e.g. 0.5 = selection square will be half the size of board squares)
+     * @return an int[] of the format: {x, y, width, height}
+     */
+    private int[] getSelectionSquareCoords(int row, int col, double scale) {
+        // calculate size and position
+        int width = (int) (squareWidth * scale);
+        int height = (int) (squareHeight * scale);
+        // offset of 0.5 * squareSize * (1 - SCALE_FACTOR) centers square inside larger square
+        int x = (int) (col * squareWidth + 0.5 * squareWidth * (1 - scale));
+        int y = (int) (row * squareHeight + 0.5 * squareHeight * (1 - scale));
+
+        return new int[]{x, y, width, height};
+    }
+
+    /**
+     * Figure out which locations a piece can actually move to, accounting for other pieces, etc.
+     * @param row row of piece to check
+     * @param col column of piece to check
+     * @return ArrayList of coordinates in the form: {{row1, col1}, {row2, col2}, etc.}
+     */
+    private ArrayList<Integer[]> getPossibleMoves(int row, int col) {
+        //TODO: implement this properly
+        return pieces[row][col].getValidLocations();
+    }
+
+    /**
+     * {@inheritDoc}
+     * Captures mouse clicks and updates game accordingly.
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
         // convert mouse x, mouse y to square on the board
@@ -161,7 +204,9 @@ public class ChessPane extends JPanel implements MouseListener {
 
         // set selectedPiece to piece at this location
         // its okay if its null
-        selectedPiece = pieces[boardX][boardY];
+        selectedPiece = pieces[boardY][boardX];
+
+        repaint();
     }
 
     // unused MouseListener methods
