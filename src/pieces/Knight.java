@@ -9,7 +9,7 @@ public class Knight extends Piece {
     }
 
     @Override
-    public ArrayList<Integer[]> getValidLocations() {
+    public ArrayList<Integer[]> getValidLocations(Piece[][] pieces) {
         ArrayList<Integer[]> locations = new ArrayList<>();
 
         // the eight possible locations of knight
@@ -27,6 +27,8 @@ public class Knight extends Piece {
 
             locations.add(new Integer[]{rowToCheck, colToCheck});
         }
+
+        preventFriendlyFire(pieces, locations);
 
         return locations;
     }

@@ -9,7 +9,7 @@ public class King extends Piece {
     }
 
     @Override
-    public ArrayList<Integer[]> getValidLocations() {
+    public ArrayList<Integer[]> getValidLocations(Piece[][] pieces) {
         ArrayList<Integer[]> locations = new ArrayList<>();
 
         // go row by row
@@ -30,6 +30,8 @@ public class King extends Piece {
                 locations.add(new Integer[]{i, j});
             }
         }
+
+        preventFriendlyFire(pieces, locations);
 
         return locations;
     }

@@ -56,8 +56,28 @@ public abstract class Piece {
     }
 
     /**
-     * Returns all the possible locations this piece can move to. Does NOT check if other pieces are in the way.
+     * Removes any locations at which a friendly piece is located.
+     * Should be called at the end of getValidLocations().
+     * @param pieces an array representing the board
+     * @param locations the list of locations
+     */
+    protected void preventFriendlyFire(Piece[][] pieces, ArrayList<Integer[]> locations) {
+        // loop backwards to allow for safe removal of elements
+        for (int i = locations.size() - 1; i >= 0; i--) {
+            int currentRow = locations.get(i)[0];
+            int currentCol = locations.get(i)[1];
+
+            // check for friendly fire
+            if (pieces[currentRow][currentCol] != null && pieces[currentRow][currentCol].isWhite() == isWhite) {
+                locations.remove(i);
+            }
+        }
+    }
+
+    /**
+     * Returns all the possible locations this piece can move to.
+     * @param pieces an array representing the board
      * @return an ArrayList of coordinates of valid move positions in the form: {{row1, col1}, {row2, col2}, ...}
      */
-    public abstract ArrayList<Integer[]> getValidLocations();
+    public abstract ArrayList<Integer[]> getValidLocations(Piece[][] pieces);
 }

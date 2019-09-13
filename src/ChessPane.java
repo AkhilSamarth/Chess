@@ -23,11 +23,14 @@ public class ChessPane extends JPanel implements MouseListener {
     // piece which is currently selected
     private Piece selectedPiece;
 
-    // represents which squares the selected piece can be moved to
+    // array which indicates if the location given by [row][col] can be moved to or not
     private boolean[][] movableSquares = new boolean[8][8];
 
     // size of each square
     private int squareWidth, squareHeight;
+
+    // whether or not its white's turn, true at start
+    private boolean isWhitesTurn = true;
     
     /**
      * Instantiates a panel with the given width and height.
@@ -155,16 +158,19 @@ public class ChessPane extends JPanel implements MouseListener {
             int[] squareInfo = getSelectionSquareCoords(row, col, SCALE_FACTOR);
             g2.drawRect(squareInfo[0], squareInfo[1], squareInfo[2], squareInfo[3]);
 
-            // draw valid move locations
-            g2.setColor(Color.GREEN);
-            for (int i = 0; i < 8; i++) {
-                for (int j = 0; j < 8; j++) {
-                    // check if this square is a valid move location, if so, draw
-                    if (movableSquares[i][j]) {
-                        squareInfo = getSelectionSquareCoords(i, j, SCALE_FACTOR);
-                        g2.drawRect(squareInfo[0], squareInfo[1], squareInfo[2], squareInfo[3]);
-                    }
+            // get and draw valid move locations of selected piece
+            ArrayList<Integer[]> validMoves = selectedPiece.getValidLocations(pieces);
+            for (Integer[] coord : validMoves) {
+                // if there is a piece at this square, mark it red (attack square)
+                if (pieces[coord[0]][coord[1]] != null) {
+                    g2.setColor(Color.RED);
+                } else {
+                    g2.setColor(Color.GREEN);
                 }
+
+                // draw square
+                squareInfo = getSelectionSquareCoords(coord[0], coord[1], SCALE_FACTOR);
+                g2.drawRect(squareInfo[0], squareInfo[1], squareInfo[2], squareInfo[3]);
             }
         }
     }
@@ -188,7 +194,8 @@ public class ChessPane extends JPanel implements MouseListener {
     }
 
     /**
-     * Figure out which locations a piece can actually move to, accounting for other pieces, etc. and update the movableSquares array accordingly.
+     *
+     * Update the movableSquares array, which is used by the mouseClicked method to determine movement.
      */
     private void updateMovableSquares() {
         // reset array each time
@@ -199,9 +206,9 @@ public class ChessPane extends JPanel implements MouseListener {
             return;
         }
 
-        //TODO: implement this properly
-        ArrayList<Integer[]> validLocs = selectedPiece.getValidLocations();
-        for (Integer[] coord : validLocs) {
+        // get valid moves from piece and update array accordingly
+        ArrayList<Integer[]> validLocations = selectedPiece.getValidLocations(pieces);
+        for (Integer[] coord : validLocations) {
             movableSquares[coord[0]][coord[1]] = true;
         }
     }
@@ -213,25 +220,38 @@ public class ChessPane extends JPanel implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         // convert mouse x, mouse y to square on the board
-        int boardCol = e.getX() / squareWidth;
-        int boardRow = e.getY() / squareHeight;
+        int mouseCol = e.getX() / squareWidth;
+        int mouseRow = e.getY() / squareHeight;
 
-        // set selectedPiece to piece at this location, if it exists
-        if (pieces[boardRow][boardCol] != null) {
-            selectedPiece = pieces[boardRow][boardCol];
-            // update movableSquares
-            updateMovableSquares();
-        } else if (selectedPiece != null && movableSquares[boardRow][boardCol]) {             // if there is a piece selected, check if a valid move square was clicked
+        // if a piece is selected and a movable square is clicked, allow it to move/attack
+        if (selectedPiece != null && movableSquares[mouseRow][mouseCol]) {
+            // TODO: if attack, keep track of attacked piece
+
             int pieceRow = selectedPiece.getRow();
             int pieceCol = selectedPiece.getColumn();
 
             // move piece
             pieces[pieceRow][pieceCol] = null;
-            pieces[boardRow][boardCol] = selectedPiece;
-            selectedPiece.setPosition(boardRow, boardCol);
+            pieces[mouseRow][mouseCol] = selectedPiece;
+            selectedPiece.setPosition(mouseRow, mouseCol);
+
+            // if this piece is a pawn which has reached the end, promote it to a queen
+            // TODO: allow player to select piece to promote to
+            if (selectedPiece instanceof Pawn && (mouseRow == 0 || mouseRow == 7)) {
+                // replace Pawn with new Queen
+                pieces[mouseRow][mouseCol] = new Queen(mouseRow, mouseCol, selectedPiece.isWhite());
+            }
 
             // deselect piece
             selectedPiece = null;
+            updateMovableSquares();
+
+            // switch turn
+            isWhitesTurn = !isWhitesTurn;
+
+        } else if (pieces[mouseRow][mouseCol] != null && pieces[mouseRow][mouseCol].isWhite() == isWhitesTurn) {    // select piece at current location, making sure piece is correct color
+            selectedPiece = pieces[mouseRow][mouseCol];
+            // update movableSquares
             updateMovableSquares();
         } else {
             // if neither of above cases are true, deselect piece

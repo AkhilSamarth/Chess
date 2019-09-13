@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Pawn extends Piece {
 
+    // TODO: allow for promotions
+
     // whether or not this pawn is on its first move
     private boolean firstMove = true;
 
@@ -22,39 +24,50 @@ public class Pawn extends Piece {
     }
 
     @Override
-    public ArrayList<Integer[]> getValidLocations() {
+    public ArrayList<Integer[]> getValidLocations(Piece[][] pieces) {
         ArrayList<Integer[]> locations = new ArrayList<>();
 
         // determine direction based on white and black
         if (isWhite) {
-            // add square in front of pawn and ones to side (for attacks)
-            locations.add(new Integer[]{row - 1, col});
-            if (col - 1 >= 0) {
+            // add square in front of pawn if unobstructed
+            if (pieces[row - 1][col] == null) {
+                locations.add(new Integer[]{row - 1, col});
+            }
+
+            // add diagonals if there's a piece there
+            if (col - 1 >= 0 && pieces[row - 1][col - 1] != null) {
                 locations.add(new Integer[]{row - 1, col - 1});
             }
-            if (col + 1 < 8) {
+            if (col + 1 < 8 && pieces[row - 1][col + 1] != null) {
                 locations.add(new Integer[]{row - 1, col + 1});
             }
 
-            // add extra square if first move
-            if (firstMove) {
+            // add extra square in front if first move
+            if (firstMove && pieces[row - 2][col] == null) {
                 locations.add(new Integer[]{row - 2, col});
             }
         } else {
             // repeat above with black
-            locations.add(new Integer[]{row + 1, col});
-            if (col - 1 >= 0) {
+            // add square in front of pawn if unobstructed
+            if (pieces[row + 1][col] == null) {
+                locations.add(new Integer[]{row + 1, col});
+            }
+
+            // add diagonals if there's a piece there
+            if (col - 1 >= 0 && pieces[row + 1][col - 1] != null) {
                 locations.add(new Integer[]{row + 1, col - 1});
             }
-            if (col + 1 < 8) {
+            if (col + 1 < 8 && pieces[row + 1][col + 1] != null) {
                 locations.add(new Integer[]{row + 1, col + 1});
             }
 
-            // add extra square if first move
-            if (firstMove) {
+            // add extra square in front if first move
+            if (firstMove && pieces[row + 2][col] == null) {
                 locations.add(new Integer[]{row + 2, col});
             }
         }
+
+        preventFriendlyFire(pieces, locations);
 
         return locations;
     }

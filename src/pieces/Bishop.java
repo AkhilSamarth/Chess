@@ -9,38 +9,68 @@ public class Bishop extends Piece {
     }
 
     @Override
-    public ArrayList<Integer[]> getValidLocations() {
+    public ArrayList<Integer[]> getValidLocations(Piece[][] pieces) {
         ArrayList<Integer[]> locations = new ArrayList<>();
 
-        // loop through diagonals in front of and behind bishop
-        int currentColFront = col + 1;
-        int currentColBack = col - 1;
-        int rowOffset = 1;
-        while (currentColFront < 8 || currentColBack >= 0) {
-            // if squares are in bound, add to list
-            // front of bishop
-            if (currentColFront < 8) {
-                if (row + rowOffset < 8) {
-                    locations.add(new Integer[]{row + rowOffset, currentColFront});
-                }
-                if (row - rowOffset >= 0) {
-                    locations.add(new Integer[]{row - rowOffset, currentColFront});
-                }
+        // loop through each of the four diagonals until an obstruction is reached
+        int currentRow = row + 1;
+        int currentCol = col + 1;
+        // going bottom right
+        while (currentCol < 8 && currentRow < 8) {
+            locations.add(new Integer[]{currentRow, currentCol});
+
+            if (pieces[currentRow][currentCol] != null) {
+                break;
             }
 
-            // behind bishop
-            if (currentColBack >= 0) {
-                if (row + rowOffset < 8) {
-                    locations.add(new Integer[]{row + rowOffset, currentColBack});
-                }
-                if (row - rowOffset >= 0) {
-                    locations.add(new Integer[]{row - rowOffset, currentColBack});
-                }
-            }
-            currentColFront++;
-            currentColBack--;
-            rowOffset++;
+            currentRow++;
+            currentCol++;
         }
+
+        currentRow = row - 1;
+        currentCol = col + 1;
+        // going top right
+        while (currentCol < 8 && currentRow >= 0) {
+            locations.add(new Integer[]{currentRow, currentCol});
+
+            if (pieces[currentRow][currentCol] != null) {
+                break;
+            }
+
+            currentRow--;
+            currentCol++;
+        }
+
+        currentRow = row + 1;
+        currentCol = col - 1;
+        // going bottom left
+        while (currentCol >= 0 && currentRow < 8) {
+            locations.add(new Integer[]{currentRow, currentCol});
+
+            if (pieces[currentRow][currentCol] != null) {
+                break;
+            }
+
+            currentRow++;
+            currentCol--;
+        }
+
+        currentRow = row - 1;
+        currentCol = col - 1;
+        // going top left
+        while (currentCol >= 0 && currentRow >= 0) {
+            locations.add(new Integer[]{currentRow, currentCol});
+
+            if (pieces[currentRow][currentCol] != null) {
+                break;
+            }
+
+            currentRow--;
+            currentCol--;
+        }
+
+
+        preventFriendlyFire(pieces, locations);
 
         return locations;
     }
