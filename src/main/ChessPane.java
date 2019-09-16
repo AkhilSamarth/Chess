@@ -1,3 +1,5 @@
+package main;
+
 import pieces.*;
 
 import javax.swing.*;
@@ -6,6 +8,7 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 /**
@@ -52,6 +55,15 @@ public class ChessPane extends JPanel implements MouseListener {
             public void componentResized(ComponentEvent e) {
                 squareWidth = getWidth() / 8;
                 squareHeight = getHeight() / 8;
+
+                // update piece sizes
+                for (int i = 0; i < 8; i++) {
+                    for (int j = 0; j < 8; j++) {
+                        if (pieces[i][j] != null) {
+                            pieces[i][j].updateIcon(squareWidth, squareHeight);
+                        }
+                    }
+                }
             }
         });
 
@@ -97,7 +109,6 @@ public class ChessPane extends JPanel implements MouseListener {
             // add non-pawn piece
             pieces[0][i] = darkPiece;
             pieces[7][i] = lightPiece;
-
         }
     }
 
@@ -128,7 +139,6 @@ public class ChessPane extends JPanel implements MouseListener {
             }
         }
 
-        // TODO: replace with proper piece drawing code
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 Piece current = pieces[i][j];
@@ -136,9 +146,18 @@ public class ChessPane extends JPanel implements MouseListener {
                     continue;
                 }
 
-                g2.setColor(current.isWhite() ? Color.GREEN : Color.RED);
-                g2.setFont(new Font("Arial", Font.PLAIN, 32));
-                g2.drawString(current.getClass().getName().substring(7), j * squareWidth + 20, i * squareHeight + 50);
+                BufferedImage icon = current.getIcon();
+
+                // calculate coords relative to this square needed for centered icon
+                int iconX = (squareWidth - icon.getWidth()) / 2;
+                int iconY = (squareHeight - icon.getHeight()) / 2;
+
+                // coordinates of current square
+                int squareX = squareWidth * j;
+                int squareY = squareHeight * i;
+
+                // draw icon inside square
+                g2.drawImage(icon, null, iconX + squareX, iconY + squareY);
             }
         }
 

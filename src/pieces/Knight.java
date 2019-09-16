@@ -6,6 +6,9 @@ public class Knight extends Piece {
 
     public Knight(int row, int col, boolean isWhite) {
         super(row, col, isWhite);
+
+        // set icon
+        loadIcon("knight");
     }
 
     @Override
@@ -28,7 +31,7 @@ public class Knight extends Piece {
             locations.add(new Integer[]{rowToCheck, colToCheck});
         }
 
-        preventFriendlyFire(pieces, locations);
+        removeFriendlyFireLocations(pieces, locations);
 
         return locations;
     }

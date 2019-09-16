@@ -1,3 +1,5 @@
+package main;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -9,8 +11,8 @@ public class Main {
 
     public static JFrame frame;
 
-    // initial size of panel
-    private static int initialSize = 960;
+    // initial size of panel, square of given side length
+    public static final int INITIAL_SIZE = 960;
 
     // used for switching panels
     private static CardLayout cardLayout;
@@ -24,9 +26,9 @@ public class Main {
         // panel to store cards
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
-        cardPanel.setPreferredSize(new Dimension(initialSize, initialSize));
-        cardPanel.add(new MenuPane(initialSize, initialSize), MENUPANE);
-        cardPanel.add(new ChessPane(initialSize, initialSize), CHESSPANE);
+        cardPanel.setPreferredSize(new Dimension(INITIAL_SIZE, INITIAL_SIZE));
+        cardPanel.add(new MenuPane(INITIAL_SIZE, INITIAL_SIZE), MENUPANE);
+        cardPanel.add(new ChessPane(INITIAL_SIZE, INITIAL_SIZE), CHESSPANE);
 
         // add cards to frame
         frame.add(cardPanel);

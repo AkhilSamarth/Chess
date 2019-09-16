@@ -6,6 +6,9 @@ public class Rook extends Piece {
 
     public Rook(int row, int col, boolean isWhite) {
         super(row, col, isWhite);
+
+        // set icon
+        loadIcon("rook");
     }
 
     @Override
@@ -46,7 +49,7 @@ public class Rook extends Piece {
             }
         }
 
-        preventFriendlyFire(pieces, locations);
+        removeFriendlyFireLocations(pieces, locations);
 
         return locations;
     }

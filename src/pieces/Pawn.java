@@ -11,6 +11,9 @@ public class Pawn extends Piece {
 
     public Pawn(int row, int col, boolean isWhite) {
         super(row, col, isWhite);
+
+        // set icon
+        loadIcon("pawn");
     }
 
     // override setter to update firstMove
@@ -67,7 +70,7 @@ public class Pawn extends Piece {
             }
         }
 
-        preventFriendlyFire(pieces, locations);
+        removeFriendlyFireLocations(pieces, locations);
 
         return locations;
     }
