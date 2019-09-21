@@ -12,8 +12,9 @@ public class Knight extends Piece {
     }
 
     @Override
-    public ArrayList<Integer[]> getValidLocations(Piece[][] pieces) {
+    public void updateValidLocations(Piece[][] pieces) {
         ArrayList<Integer[]> locations = new ArrayList<>();
+        isGivingCheck = false;
 
         // the eight possible locations of knight
         final int[][] LOCS_TO_CHECK = {{row+2, col+1}, {row+2, col-1},
@@ -28,11 +29,15 @@ public class Knight extends Piece {
                 continue;
             }
 
+            if (pieces[rowToCheck][colToCheck] != null && pieces[rowToCheck][colToCheck] instanceof King
+                    && pieces[rowToCheck][colToCheck].isWhite() != isWhite) {
+                isGivingCheck = true;
+            }
             locations.add(new Integer[]{rowToCheck, colToCheck});
         }
 
         removeFriendlyFireLocations(pieces, locations);
 
-        return locations;
+        validLocations = locations;
     }
 }

@@ -18,7 +18,8 @@ public abstract class Piece {
     public static final double ICON_SCALE = 0.55;
 
     protected BufferedImage icon, sourceImage;
-    protected boolean isWhite;
+    protected ArrayList<Integer[]> validLocations;
+    protected boolean isWhite, isGivingCheck = false;
     protected int row, col;
 
     /**
@@ -31,6 +32,8 @@ public abstract class Piece {
         this.row = row;
         this.col = col;
         this.isWhite = isWhite;
+
+        validLocations = new ArrayList<Integer[]>();
     }
 
     // getters and setters
@@ -38,8 +41,16 @@ public abstract class Piece {
         return icon;
     }
 
+    public ArrayList<Integer[]> getValidLocations() {
+        return validLocations;
+    }
+
     public boolean isWhite() {
         return isWhite;
+    }
+
+    public boolean isGivingCheck() {
+        return isGivingCheck;
     }
 
     public int getRow() {
@@ -91,11 +102,12 @@ public abstract class Piece {
     }
 
     /**
-     * Returns all the possible locations this piece can move to.
+     * Update validLocations to represent where this piece can move to.
+     * This method should be called on all pieces every time a move occurs.
      * @param pieces an array representing the board
      * @return an ArrayList of coordinates of valid move positions in the form: {{row1, col1}, {row2, col2}, ...}
      */
-    public abstract ArrayList<Integer[]> getValidLocations(Piece[][] pieces);
+    public abstract void updateValidLocations(Piece[][] pieces);
 
     /**
      * Loads the icon for this piece.
@@ -139,5 +151,15 @@ public abstract class Piece {
                 locations.remove(i);
             }
         }
+    }
+
+    /**
+     * Helper method to check if a given piece is a king of the opposite color.
+     * Used to update isGivingCheck within updateValidLocations().
+     * @param piece the piece to check
+     * @return whether or not the given piece is a King
+     */
+    protected boolean isPieceKing(Piece piece) {
+        return piece instanceof King && piece.isWhite != isWhite;
     }
 }

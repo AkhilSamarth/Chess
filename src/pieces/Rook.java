@@ -12,8 +12,9 @@ public class Rook extends Piece {
     }
 
     @Override
-    public ArrayList<Integer[]> getValidLocations(Piece[][] pieces) {
+    public void updateValidLocations(Piece[][] pieces) {
         ArrayList<Integer[]> locations = new ArrayList<>();
+        isGivingCheck = false;
 
         // loop in each of the four directions until an obstruction is found
         // going right
@@ -21,6 +22,7 @@ public class Rook extends Piece {
             locations.add(new Integer[]{row, i});
 
             if (pieces[row][i] != null) {
+                isGivingCheck |= isPieceKing(pieces[row][i]);
                 break;
             }
         }
@@ -29,6 +31,7 @@ public class Rook extends Piece {
             locations.add(new Integer[]{row, i});
 
             if (pieces[row][i] != null) {
+                isGivingCheck |= isPieceKing(pieces[row][i]);
                 break;
             }
         }
@@ -37,6 +40,7 @@ public class Rook extends Piece {
             locations.add(new Integer[]{i, col});
 
             if (pieces[i][col] != null) {
+                isGivingCheck |= isPieceKing(pieces[i][col]);
                 break;
             }
         }
@@ -45,12 +49,13 @@ public class Rook extends Piece {
             locations.add(new Integer[]{i, col});
 
             if (pieces[i][col] != null) {
+                isGivingCheck |= isPieceKing(pieces[i][col]);
                 break;
             }
         }
 
         removeFriendlyFireLocations(pieces, locations);
 
-        return locations;
+        validLocations = locations;
     }
 }

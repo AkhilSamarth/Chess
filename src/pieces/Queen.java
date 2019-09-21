@@ -12,16 +12,24 @@ public class Queen extends Piece {
     }
 
     @Override
-    public ArrayList<Integer[]> getValidLocations(Piece[][] pieces) {
+    public void updateValidLocations(Piece[][] pieces) {
+        isGivingCheck = false;
+
         // create a fake bishop and rook and combine their locations
         Rook rook = new Rook(row, col, isWhite);
         Bishop bishop = new Bishop(row, col, isWhite);
 
-        ArrayList<Integer[]> locations = rook.getValidLocations(pieces);
-        locations.addAll(bishop.getValidLocations(pieces));
+        // update locations of rook and bishop
+        rook.updateValidLocations(pieces);
+        bishop.updateValidLocations(pieces);
+
+        isGivingCheck = rook.isGivingCheck() || bishop.isGivingCheck();
+
+        ArrayList<Integer[]> locations = rook.getValidLocations();
+        locations.addAll(bishop.getValidLocations());
 
         // friendly fire already prevented by Rook and Bishop
 
-        return locations;
+        validLocations = locations;
     }
 }

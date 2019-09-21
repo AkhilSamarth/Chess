@@ -12,8 +12,9 @@ public class Bishop extends Piece {
     }
 
     @Override
-    public ArrayList<Integer[]> getValidLocations(Piece[][] pieces) {
+    public void updateValidLocations(Piece[][] pieces) {
         ArrayList<Integer[]> locations = new ArrayList<>();
+        isGivingCheck = false;
 
         // loop through each of the four diagonals until an obstruction is reached
         int currentRow = row + 1;
@@ -23,6 +24,7 @@ public class Bishop extends Piece {
             locations.add(new Integer[]{currentRow, currentCol});
 
             if (pieces[currentRow][currentCol] != null) {
+                isGivingCheck |= isPieceKing(pieces[currentRow][currentCol]);
                 break;
             }
 
@@ -37,6 +39,7 @@ public class Bishop extends Piece {
             locations.add(new Integer[]{currentRow, currentCol});
 
             if (pieces[currentRow][currentCol] != null) {
+                isGivingCheck |= isPieceKing(pieces[currentRow][currentCol]);
                 break;
             }
 
@@ -51,6 +54,7 @@ public class Bishop extends Piece {
             locations.add(new Integer[]{currentRow, currentCol});
 
             if (pieces[currentRow][currentCol] != null) {
+                isGivingCheck |= isPieceKing(pieces[currentRow][currentCol]);
                 break;
             }
 
@@ -65,6 +69,7 @@ public class Bishop extends Piece {
             locations.add(new Integer[]{currentRow, currentCol});
 
             if (pieces[currentRow][currentCol] != null) {
+                isGivingCheck |= isPieceKing(pieces[currentRow][currentCol]);
                 break;
             }
 
@@ -75,6 +80,6 @@ public class Bishop extends Piece {
 
         removeFriendlyFireLocations(pieces, locations);
 
-        return locations;
+        validLocations = locations;
     }
 }

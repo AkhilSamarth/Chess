@@ -27,8 +27,9 @@ public class Pawn extends Piece {
     }
 
     @Override
-    public ArrayList<Integer[]> getValidLocations(Piece[][] pieces) {
+    public void updateValidLocations(Piece[][] pieces) {
         ArrayList<Integer[]> locations = new ArrayList<>();
+        isGivingCheck = false;
 
         // determine direction based on white and black
         if (isWhite) {
@@ -39,9 +40,11 @@ public class Pawn extends Piece {
 
             // add diagonals if there's a piece there
             if (col - 1 >= 0 && pieces[row - 1][col - 1] != null) {
+                isGivingCheck = isPieceKing(pieces[row - 1][col - 1]);
                 locations.add(new Integer[]{row - 1, col - 1});
             }
             if (col + 1 < 8 && pieces[row - 1][col + 1] != null) {
+                isGivingCheck = isPieceKing(pieces[row - 1][col + 1]);
                 locations.add(new Integer[]{row - 1, col + 1});
             }
 
@@ -72,6 +75,6 @@ public class Pawn extends Piece {
 
         removeFriendlyFireLocations(pieces, locations);
 
-        return locations;
+        validLocations = locations;
     }
 }

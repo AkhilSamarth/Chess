@@ -17,8 +17,8 @@ import java.util.ArrayList;
 public class ChessPane extends JPanel implements MouseListener {
 
     // colors of the squares on the board
-    public static final Color BOARD_COLOR_LIGHT = new Color(255, 255, 240);
-    public static final Color BOARD_COLOR_DARK = new Color(0, 0, 0);
+    public static final Color BOARD_COLOR_LIGHT = new Color(255, 255, 240);     // ivory
+    public static final Color BOARD_COLOR_DARK = new Color(90, 40, 10);          // dark brown
 
     // array which represents each piece and its location on the board
     private Piece[][] pieces = new Piece[8][8];
@@ -110,6 +110,9 @@ public class ChessPane extends JPanel implements MouseListener {
             pieces[0][i] = darkPiece;
             pieces[7][i] = lightPiece;
         }
+
+        // update all pieces
+        updatePieceLocations();
     }
 
     /**
@@ -119,6 +122,9 @@ public class ChessPane extends JPanel implements MouseListener {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+
+        // how much selection squares are scaled down compared to board squares
+        final double SCALE_FACTOR = 0.8;
 
         // cast to Graphics2D for more flexibility
         Graphics2D g2 = (Graphics2D) g;
@@ -158,16 +164,20 @@ public class ChessPane extends JPanel implements MouseListener {
 
                 // draw icon inside square
                 g2.drawImage(icon, null, iconX + squareX, iconY + squareY);
+
+                // if this piece is giving check, highlight it with a yellow box
+                if (current.isGivingCheck()) {
+                    g2.setStroke(new BasicStroke(4));
+                    g2.setColor(Color.YELLOW);
+                    int[] squareCoords = getSelectionSquareCoords(i, j, SCALE_FACTOR);
+                    g2.drawRect(squareCoords[0], squareCoords[1], squareCoords[2], squareCoords[3]);
+                }
+
             }
         }
 
-
-
         // highlight selectedPiece
         if (selectedPiece != null) {
-            // how much selection squares are scaled down compared to board squares
-            final double SCALE_FACTOR = 0.8;
-
             g2.setStroke(new BasicStroke(4));
             g2.setColor(Color.BLUE);
             int row = selectedPiece.getRow();
@@ -178,7 +188,7 @@ public class ChessPane extends JPanel implements MouseListener {
             g2.drawRect(squareInfo[0], squareInfo[1], squareInfo[2], squareInfo[3]);
 
             // get and draw valid move locations of selected piece
-            ArrayList<Integer[]> validMoves = selectedPiece.getValidLocations(pieces);
+            ArrayList<Integer[]> validMoves = selectedPiece.getValidLocations();
             for (Integer[] coord : validMoves) {
                 // if there is a piece at this square, mark it red (attack square)
                 if (pieces[coord[0]][coord[1]] != null) {
@@ -213,7 +223,6 @@ public class ChessPane extends JPanel implements MouseListener {
     }
 
     /**
-     *
      * Update the movableSquares array, which is used by the mouseClicked method to determine movement.
      */
     private void updateMovableSquares() {
@@ -226,9 +235,22 @@ public class ChessPane extends JPanel implements MouseListener {
         }
 
         // get valid moves from piece and update array accordingly
-        ArrayList<Integer[]> validLocations = selectedPiece.getValidLocations(pieces);
+        ArrayList<Integer[]> validLocations = selectedPiece.getValidLocations();
         for (Integer[] coord : validLocations) {
             movableSquares[coord[0]][coord[1]] = true;
+        }
+    }
+
+    /**
+     * Updates all the pieces with the current board configuration so that they have the correct valid moves.
+     */
+    private void updatePieceLocations() {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (pieces[i][j] != null) {
+                    pieces[i][j].updateValidLocations(pieces);
+                }
+            }
         }
     }
 
@@ -261,9 +283,10 @@ public class ChessPane extends JPanel implements MouseListener {
                 pieces[mouseRow][mouseCol] = new Queen(mouseRow, mouseCol, selectedPiece.isWhite());
             }
 
-            // deselect piece
+            // deselect piece and update pieces and board
             selectedPiece = null;
             updateMovableSquares();
+            updatePieceLocations();
 
             // switch turn
             isWhitesTurn = !isWhitesTurn;

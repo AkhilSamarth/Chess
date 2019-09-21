@@ -12,7 +12,7 @@ public class King extends Piece {
     }
 
     @Override
-    public ArrayList<Integer[]> getValidLocations(Piece[][] pieces) {
+    public void updateValidLocations(Piece[][] pieces) {
         ArrayList<Integer[]> locations = new ArrayList<>();
 
         // go row by row
@@ -36,6 +36,6 @@ public class King extends Piece {
 
         removeFriendlyFireLocations(pieces, locations);
 
-        return locations;
+        validLocations = locations;
     }
 }
