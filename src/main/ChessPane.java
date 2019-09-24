@@ -64,6 +64,8 @@ public class ChessPane extends JPanel implements MouseListener {
                         }
                     }
                 }
+
+                repaint();
             }
         });
 

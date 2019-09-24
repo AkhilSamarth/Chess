@@ -36,8 +36,8 @@ public class Main {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
-        // TODO: show menu initially
-        showChessPane();
+        // show menu
+        showMenuPane();
     }
 
     /**
