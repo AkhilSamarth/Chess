@@ -21,10 +21,8 @@ public class Bishop extends Piece {
         int currentCol = col + 1;
         // going bottom right
         while (currentCol < 8 && currentRow < 8) {
-            locations.add(new Integer[]{currentRow, currentCol});
-
-            if (pieces[currentRow][currentCol] != null) {
-                isGivingCheck |= isPieceKing(pieces[currentRow][currentCol]);
+            // add the location, and if it returns true (obstruction), break
+            if (addBishopRookLocation(pieces, locations, currentRow, currentCol)) {
                 break;
             }
 
@@ -36,10 +34,8 @@ public class Bishop extends Piece {
         currentCol = col + 1;
         // going top right
         while (currentCol < 8 && currentRow >= 0) {
-            locations.add(new Integer[]{currentRow, currentCol});
-
-            if (pieces[currentRow][currentCol] != null) {
-                isGivingCheck |= isPieceKing(pieces[currentRow][currentCol]);
+            // add the location, and if it returns true (obstruction), break
+            if (addBishopRookLocation(pieces, locations, currentRow, currentCol)) {
                 break;
             }
 
@@ -51,10 +47,8 @@ public class Bishop extends Piece {
         currentCol = col - 1;
         // going bottom left
         while (currentCol >= 0 && currentRow < 8) {
-            locations.add(new Integer[]{currentRow, currentCol});
-
-            if (pieces[currentRow][currentCol] != null) {
-                isGivingCheck |= isPieceKing(pieces[currentRow][currentCol]);
+            // add the location, and if it returns true (obstruction), break
+            if (addBishopRookLocation(pieces, locations, currentRow, currentCol)) {
                 break;
             }
 
@@ -66,10 +60,8 @@ public class Bishop extends Piece {
         currentCol = col - 1;
         // going top left
         while (currentCol >= 0 && currentRow >= 0) {
-            locations.add(new Integer[]{currentRow, currentCol});
-
-            if (pieces[currentRow][currentCol] != null) {
-                isGivingCheck |= isPieceKing(pieces[currentRow][currentCol]);
+            // add the location, and if it returns true (obstruction), break
+            if (addBishopRookLocation(pieces, locations, currentRow, currentCol)) {
                 break;
             }
 

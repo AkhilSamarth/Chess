@@ -4,6 +4,17 @@ import java.util.ArrayList;
 
 public class Rook extends Piece {
 
+    public boolean hasMoved() {
+        return hasMoved;
+    }
+
+    public void setMoved(boolean hasMoved) {
+        this.hasMoved = hasMoved;
+    }
+
+    // used for castling
+    private boolean hasMoved = false;
+
     public Rook(int row, int col, boolean isWhite) {
         super(row, col, isWhite);
 
@@ -19,37 +30,29 @@ public class Rook extends Piece {
         // loop in each of the four directions until an obstruction is found
         // going right
         for (int i = col + 1; i < 8; i++) {
-            locations.add(new Integer[]{row, i});
-
-            if (pieces[row][i] != null) {
-                isGivingCheck |= isPieceKing(pieces[row][i]);
+            // add the location, and if it returns true (obstruction), break
+            if (addBishopRookLocation(pieces, locations, row, i)) {
                 break;
             }
         }
         // going left
         for (int i = col - 1; i >= 0; i--) {
-            locations.add(new Integer[]{row, i});
-
-            if (pieces[row][i] != null) {
-                isGivingCheck |= isPieceKing(pieces[row][i]);
+            // add the location, and if it returns true (obstruction), break
+            if (addBishopRookLocation(pieces, locations, row, i)) {
                 break;
             }
         }
         // going down
         for (int i = row + 1; i < 8; i++) {
-            locations.add(new Integer[]{i, col});
-
-            if (pieces[i][col] != null) {
-                isGivingCheck |= isPieceKing(pieces[i][col]);
+            // add the location, and if it returns true (obstruction), break
+            if (addBishopRookLocation(pieces, locations, i, col)) {
                 break;
             }
         }
         // going up
         for (int i = row - 1; i >= 0; i--) {
-            locations.add(new Integer[]{i, col});
-
-            if (pieces[i][col] != null) {
-                isGivingCheck |= isPieceKing(pieces[i][col]);
+            // add the location, and if it returns true (obstruction), break
+            if (addBishopRookLocation(pieces, locations, i, col)) {
                 break;
             }
         }

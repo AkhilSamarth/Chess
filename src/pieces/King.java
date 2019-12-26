@@ -4,6 +4,25 @@ import java.util.ArrayList;
 
 public class King extends Piece {
 
+    // used for castling
+    private boolean hasMoved = false, isChecked = false;
+
+    public boolean hasMoved() {
+        return hasMoved;
+    }
+
+    public void setMoved(boolean hasMoved) {
+        this.hasMoved = hasMoved;
+    }
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
     public King(int row, int col, boolean isWhite) {
         super(row, col, isWhite);
 

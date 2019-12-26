@@ -40,12 +40,10 @@ public class Pawn extends Piece {
 
             // add diagonals if there's a piece there
             if (col - 1 >= 0 && pieces[row - 1][col - 1] != null) {
-                isGivingCheck = isPieceKing(pieces[row - 1][col - 1]);
-                locations.add(new Integer[]{row - 1, col - 1});
+                addAttackLocation(pieces, locations, row - 1, col - 1);
             }
             if (col + 1 < 8 && pieces[row - 1][col + 1] != null) {
-                isGivingCheck = isPieceKing(pieces[row - 1][col + 1]);
-                locations.add(new Integer[]{row - 1, col + 1});
+                addAttackLocation(pieces, locations, row - 1, col + 1);
             }
 
             // add extra square in front if first move
@@ -61,10 +59,10 @@ public class Pawn extends Piece {
 
             // add diagonals if there's a piece there
             if (col - 1 >= 0 && pieces[row + 1][col - 1] != null) {
-                locations.add(new Integer[]{row + 1, col - 1});
+                addAttackLocation(pieces, locations, row + 1, col - 1);
             }
             if (col + 1 < 8 && pieces[row + 1][col + 1] != null) {
-                locations.add(new Integer[]{row + 1, col + 1});
+                addAttackLocation(pieces, locations, row + 1, col + 1);
             }
 
             // add extra square in front if first move
@@ -76,5 +74,21 @@ public class Pawn extends Piece {
         removeFriendlyFireLocations(pieces, locations);
 
         validLocations = locations;
+    }
+
+    /**
+     * Helper method for updating valid locations.
+     * @param pieces an array representing the current board
+     * @param locations the locations array to update
+     * @param row the row of the location being added
+     * @param col the column of the location being added
+     */
+    private void addAttackLocation(Piece[][] pieces, ArrayList<Integer[]> locations, int row, int col) {
+        // if king, update check status
+        if (isPieceKing(pieces[row][col])) {
+            isGivingCheck = true;
+            ((King) pieces[row][col]).setChecked(true);
+        }
+        locations.add(new Integer[]{row, col});
     }
 }

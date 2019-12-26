@@ -1,45 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb55a388-dea0-4f17-b828-befdfca3ad31" name="Default Changelist" comment="Added image icons.&#10;Added code to handle drawing ans">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Chess.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/META-INF/Chess.kotlin_module" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/main/ChessPane$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/main/ChessPane.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/main/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/main/MenuPane$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/main/MenuPane$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/main/MenuPane.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/pieces/Bishop.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/pieces/King.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/pieces/Knight.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/pieces/Pawn.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/pieces/Piece.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/pieces/Queen.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Chess/pieces/Rook.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/Download Info.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/button_play_clicked.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/button_play_normal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/button_play_rollover.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/menu_background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/piece_black_bishop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/piece_black_king.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/piece_black_knight.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/piece_black_pawn.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/piece_black_queen.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/piece_black_rook.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/piece_white_bishop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/piece_white_king.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/piece_white_knight.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/piece_white_pawn.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/piece_white_queen.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/piece_white_rook.png" afterDir="false" />
+    <list default="true" id="fb55a388-dea0-4f17-b828-befdfca3ad31" name="Default Changelist" comment="Changed bishop's">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Chess/META-INF/Chess.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Chess/main/ChessPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/main/ChessPane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Chess/pieces/Bishop.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/pieces/Bishop.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Chess/pieces/King.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/pieces/King.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Chess/pieces/Piece.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/pieces/Piece.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Chess/pieces/Rook.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chess/pieces/Rook.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/ChessPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ChessPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pieces/Bishop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pieces/Bishop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pieces/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pieces/King.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pieces/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pieces/Knight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pieces/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pieces/Pawn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pieces/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pieces/Piece.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pieces/Rook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pieces/Rook.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,11 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/ChessPane.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="40" lean-forward="true" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
+            <state relative-caret-position="2212">
+              <caret line="281" column="48" lean-forward="true" selection-start-line="281" selection-start-column="48" selection-end-line="281" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -68,13 +45,38 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/MenuPane.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
+            <state relative-caret-position="690">
               <caret line="70" column="53" selection-start-line="70" selection-start-column="53" selection-end-line="70" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#965#1171#0" expanded="true" />
-                <element signature="e#1170#1171#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pieces/Bishop.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="265">
+              <caret line="62" column="12" lean-forward="true" selection-start-line="62" selection-start-column="12" selection-end-line="65" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pieces/Rook.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="248">
+              <caret line="30" column="22" lean-forward="true" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pieces/Knight.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="35" column="13" lean-forward="true" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -82,19 +84,49 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pieces/King.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+            <state relative-caret-position="299">
+              <caret line="50" column="29" lean-forward="true" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
+              <folding>
+                <element signature="e#113#114#0" expanded="true" />
+                <element signature="e#144#145#0" expanded="true" />
+                <element signature="e#193#194#0" expanded="true" />
+                <element signature="e#233#234#0" expanded="true" />
+                <element signature="e#267#268#0" expanded="true" />
+                <element signature="e#299#300#0" expanded="true" />
+                <element signature="e#346#347#0" expanded="true" />
+                <element signature="e#381#382#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/pieces/Pawn.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="248">
+              <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/Main.java">
+        <entry file="file://$PROJECT_DIR$/src/pieces/Queen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="39" column="10" lean-forward="true" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
+            <state relative-caret-position="323">
+              <caret line="25" column="71" lean-forward="true" selection-start-line="25" selection-start-column="71" selection-end-line="25" selection-end-column="71" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pieces/Piece.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="486">
+              <caret line="174" column="47" lean-forward="true" selection-start-line="174" selection-start-column="47" selection-end-line="174" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#5497#5498#0" expanded="true" />
+                <element signature="e#5569#5570#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -119,6 +151,7 @@
       <find>getHeight() / 8</find>
       <find>movableSquares</find>
       <find>updateMovable</find>
+      <find>addLocation</find>
     </findStrings>
     <replaceStrings>
       <replace>pieceType =</replace>
@@ -128,6 +161,7 @@
       <replace>g2.</replace>
       <replace>squareSizeW</replace>
       <replace>squareHeight</replace>
+      <replace>addBishopRookLocation</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -142,24 +176,24 @@
         <option value="$PROJECT_DIR$/src/Board.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/ChessPane.java" />
-        <option value="$PROJECT_DIR$/src/pieces/King.java" />
         <option value="$PROJECT_DIR$/src/pieces/Queen.java" />
-        <option value="$PROJECT_DIR$/src/pieces/Pawn.java" />
-        <option value="$PROJECT_DIR$/src/pieces/Piece.java" />
-        <option value="$PROJECT_DIR$/src/pieces/Knight.java" />
-        <option value="$PROJECT_DIR$/src/pieces/Rook.java" />
-        <option value="$PROJECT_DIR$/src/pieces/Bishop.java" />
         <option value="$PROJECT_DIR$/src/main/Main.java" />
         <option value="$PROJECT_DIR$/src/main/MenuPane.java" />
         <option value="$PROJECT_DIR$/src/main/ChessPane.java" />
+        <option value="$PROJECT_DIR$/src/pieces/King.java" />
+        <option value="$PROJECT_DIR$/src/pieces/Piece.java" />
+        <option value="$PROJECT_DIR$/src/pieces/Bishop.java" />
+        <option value="$PROJECT_DIR$/src/pieces/Rook.java" />
+        <option value="$PROJECT_DIR$/src/pieces/Knight.java" />
+        <option value="$PROJECT_DIR$/src/pieces/Pawn.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="988" />
-    <option name="y" value="-14" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+    <option name="x" value="-1928" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -169,6 +203,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -197,21 +232,20 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1569354517196" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577381805350" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -261,7 +295,11 @@
       <workItem from="1568659647049" duration="1011000" />
       <workItem from="1569035492085" duration="6250000" />
       <workItem from="1569264579755" duration="77000" />
-      <workItem from="1569349765276" duration="4817000" />
+      <workItem from="1569349765276" duration="5464000" />
+      <workItem from="1569554251745" duration="30000" />
+      <workItem from="1573680494614" duration="121000" />
+      <workItem from="1573763956049" duration="34000" />
+      <workItem from="1577378465266" duration="3233000" />
     </task>
     <task id="LOCAL-00001" summary="Normal commit">
       <created>1568046767364</created>
@@ -319,11 +357,18 @@
       <option name="project" value="LOCAL" />
       <updated>1569354498064</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added res folder to Git, was previously untracked.">
+      <created>1569354798097</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1569354798097</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71789000" />
+    <option name="totallyTimeSpent" value="75854000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -335,10 +380,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26119402" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14765458" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -347,7 +392,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.32936078" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934355" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -405,6 +450,16 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -453,14 +508,28 @@
     <MESSAGE value="Added image icons.&#10;Added functionality for scaling, drawing, resizing, etc. the icons." />
     <MESSAGE value="Overhauled validLocations system so that all pieces are updated at the same time when a piece is moved instead of individually when they are selected.&#10;Added basic check detection system&#10;Highlighted pieces which are giving check with a yellow box." />
     <MESSAGE value="Implemented menu screen.&#10;Added images and icons for menu." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented menu screen.&#10;Added images and icons for menu." />
+    <MESSAGE value="Added res folder to Git, was previously untracked." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added res folder to Git, was previously untracked." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Board.java" />
-    <entry file="file://$PROJECT_DIR$/src/pieces/Knight.java">
+    <entry file="file://$PROJECT_DIR$/src/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="33" column="37" lean-forward="true" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
+        <state relative-caret-position="549">
+          <caret line="39" column="10" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/ChessPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2212">
+          <caret line="281" column="48" lean-forward="true" selection-start-line="281" selection-start-column="48" selection-end-line="281" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -471,73 +540,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pieces/Rook.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="51" column="31" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pieces/Bishop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="75" column="25" lean-forward="true" selection-start-line="75" selection-start-column="25" selection-end-line="75" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pieces/Piece.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2380">
-          <caret line="156" column="78" selection-start-line="156" selection-start-column="78" selection-end-line="156" selection-end-column="78" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pieces/Pawn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="31" column="30" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pieces/King.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="10" lean-forward="true" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
+        <state relative-caret-position="299">
+          <caret line="50" column="29" lean-forward="true" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#113#114#0" expanded="true" />
+            <element signature="e#144#145#0" expanded="true" />
+            <element signature="e#193#194#0" expanded="true" />
+            <element signature="e#233#234#0" expanded="true" />
+            <element signature="e#267#268#0" expanded="true" />
+            <element signature="e#299#300#0" expanded="true" />
+            <element signature="e#346#347#0" expanded="true" />
+            <element signature="e#381#382#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/MenuPane.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
+        <state relative-caret-position="690">
           <caret line="70" column="53" selection-start-line="70" selection-start-column="53" selection-end-line="70" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#965#1171#0" expanded="true" />
-            <element signature="e#1170#1171#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/ChessPane.java">
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="34">
+            <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pieces/Bishop.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="40" lean-forward="true" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
+        <state relative-caret-position="265">
+          <caret line="62" column="12" lean-forward="true" selection-start-line="62" selection-start-column="12" selection-end-line="65" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pieces/Rook.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="30" column="22" lean-forward="true" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pieces/Piece.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="174" column="47" lean-forward="true" selection-start-line="174" selection-start-column="47" selection-end-line="174" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#5497#5498#0" expanded="true" />
+            <element signature="e#5569#5570#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pieces/Knight.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="35" column="13" lean-forward="true" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pieces/Pawn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
         </state>
       </provider>
     </entry>

@@ -29,9 +29,10 @@ public class Knight extends Piece {
                 continue;
             }
 
-            if (pieces[rowToCheck][colToCheck] != null && pieces[rowToCheck][colToCheck] instanceof King
-                    && pieces[rowToCheck][colToCheck].isWhite() != isWhite) {
+            // if the move is a king, update check status
+            if (pieces[rowToCheck][colToCheck] != null && isPieceKing(pieces[rowToCheck][colToCheck])) {
                 isGivingCheck = true;
+                ((King) pieces[rowToCheck][colToCheck]).setChecked(true);
             }
             locations.add(new Integer[]{rowToCheck, colToCheck});
         }

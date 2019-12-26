@@ -162,4 +162,27 @@ public abstract class Piece {
     protected boolean isPieceKing(Piece piece) {
         return piece instanceof King && piece.isWhite != isWhite;
     }
+
+    /**
+     * Helper method for updating valid locations in bishop and rook
+     * @param pieces the 2D array representing the board
+     * @param locations the list into which the location needs to be added
+     * @param row the current row
+     * @param col the current column
+     * @return whether or not an obstruction has been reached
+     */
+    protected boolean addBishopRookLocation(Piece[][] pieces, ArrayList<Integer[]> locations, int row, int col) {
+        locations.add(new Integer[]{row, col});
+
+        if (pieces[row][col] != null) {
+            // update check status if needed
+            if (isPieceKing(pieces[row][col])) {
+                isGivingCheck = true;
+                ((King) pieces[row][col]).setChecked(true);
+            }
+            return true;
+        }
+
+        return false;
+    }
 }

@@ -278,6 +278,13 @@ public class ChessPane extends JPanel implements MouseListener {
             pieces[mouseRow][mouseCol] = selectedPiece;
             selectedPiece.setPosition(mouseRow, mouseCol);
 
+            // if this is a king or rook, let it know that it has moved
+            if (selectedPiece instanceof King) {
+                ((King) selectedPiece).setMoved(true);
+            } else if (selectedPiece instanceof Rook) {
+                ((Rook) selectedPiece).setMoved(true);
+            }
+
             // if this piece is a pawn which has reached the end, promote it to a queen
             // TODO: allow player to select piece to promote to
             if (selectedPiece instanceof Pawn && (mouseRow == 0 || mouseRow == 7)) {
