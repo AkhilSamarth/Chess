@@ -268,10 +268,33 @@ public class ChessPane extends JPanel implements MouseListener {
 
         // if a piece is selected and a movable square is clicked, allow it to move/attack
         if (selectedPiece != null && movableSquares[mouseRow][mouseCol]) {
-            // TODO: if attack, keep track of attacked piece
+            // TODO: if attack, keep track of killed pieces
 
             int pieceRow = selectedPiece.getRow();
             int pieceCol = selectedPiece.getColumn();
+
+            // if this is a king which is moving to a non-adjacent square, this is castling move
+            if (selectedPiece instanceof King && mouseCol != pieceCol - 1 && mouseCol != pieceCol + 1) {
+                // find the correct rook
+                Piece rook;
+                if (mouseCol < pieceCol) {
+                    // left rook
+                    rook = pieces[pieceRow][0];
+
+                    // move rook
+                    pieces[pieceRow][0] = null;
+                    pieces[pieceRow][pieceCol - 1] = rook;
+                    rook.setPosition(pieceRow, pieceCol - 1);
+                } else {
+                    // right rook
+                    rook = pieces[pieceRow][pieces[pieceRow].length - 1];
+
+                    // move rook
+                    pieces[pieceRow][pieces[pieceRow].length - 1] = null;
+                    pieces[pieceRow][pieceCol + 1] = rook;
+                    rook.setPosition(pieceRow, pieceCol + 1);
+                }
+            }
 
             // move piece
             pieces[pieceRow][pieceCol] = null;

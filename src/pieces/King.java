@@ -53,6 +53,38 @@ public class King extends Piece {
             }
         }
 
+        // check if castling is possible
+        if (!hasMoved && !isChecked) {
+            boolean leftClear = true, rightClear = true;      // booleans to keep track of whether or not there's pieces between the king and the rook
+            // check for clearance to the left, up to the rook
+            for (int i = col - 1; i >= 1; i--) {
+                if (pieces[row][i] != null) {
+                    leftClear = false;
+                    break;
+                }
+            }
+
+            // check for clearance to the right, up to the rook
+            for (int i = col + 1; i < pieces[row].length - 1; i++) {
+                if (pieces[row][i] != null) {
+                    rightClear = false;
+                    break;
+                }
+            }
+
+            // check if there is an unmoved rook in each direction
+            if (leftClear && pieces[row][0] != null && pieces[row][0] instanceof  Rook && !((Rook) pieces[row][0]).hasMoved()) {
+                // allow castling to the left
+                locations.add(new Integer[]{row, col - 2});
+            }
+
+            // check if there is an unmoved rook in each direction
+            if (rightClear && pieces[row][pieces[row].length - 1] != null && pieces[row][pieces[row].length - 1] instanceof  Rook && !((Rook) pieces[row][pieces[row].length - 1]).hasMoved()) {
+                // allow castling to the right
+                locations.add(new Integer[]{row, col + 2});
+            }
+        }
+
         removeFriendlyFireLocations(pieces, locations);
 
         validLocations = locations;
