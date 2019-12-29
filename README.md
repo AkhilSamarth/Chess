@@ -1,5 +1,6 @@
 # Chess
-A simple Chess game made in Java using Swing. Created in September 2019.
+A simple Chess game made in Java using the Swing framework.
 
-This game is work-in-progress, however, it is currently playable as long as the players are willing to keep track of checkmate.
-Main missing features: castling, checkmate detection
+Note: although the game is fully playable, it does not currently include check detection, so the game will sometimes allow illegal moves (e.g. moving an unrelated piece while the king is in check). Players will need to keep track of checkmates and illegal moves manually. The only other missing feature is the ability to choose which piece a pawn becomes once it reaches the opposite end of the board. Currently, all pawns will automatically become queens.
+
+Other than that, the game should be fully functional. Enjoy!
