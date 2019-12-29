@@ -167,6 +167,7 @@ public class ChessPane extends JPanel implements MouseListener {
                 // draw icon inside square
                 g2.drawImage(icon, null, iconX + squareX, iconY + squareY);
 
+                /* TODO: this code will be used when proper check detection is added
                 // if this piece is giving check, highlight it with a yellow box
                 if (current.isGivingCheck()) {
                     g2.setStroke(new BasicStroke(4));
@@ -174,7 +175,7 @@ public class ChessPane extends JPanel implements MouseListener {
                     int[] squareCoords = getSelectionSquareCoords(i, j, SCALE_FACTOR);
                     g2.drawRect(squareCoords[0], squareCoords[1], squareCoords[2], squareCoords[3]);
                 }
-
+                */
             }
         }
 

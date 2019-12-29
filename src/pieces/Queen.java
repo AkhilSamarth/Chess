@@ -13,8 +13,6 @@ public class Queen extends Piece {
 
     @Override
     public void updateValidLocations(Piece[][] pieces) {
-        isGivingCheck = false;
-
         // create a fake bishop and rook and combine their locations
         Rook rook = new Rook(row, col, isWhite);
         Bishop bishop = new Bishop(row, col, isWhite);
@@ -22,8 +20,6 @@ public class Queen extends Piece {
         // update locations of rook and bishop
         rook.updateValidLocations(pieces);
         bishop.updateValidLocations(pieces);
-
-        isGivingCheck = rook.isGivingCheck() || bishop.isGivingCheck();
 
         ArrayList<Integer[]> locations = rook.getValidLocations();
         locations.addAll(bishop.getValidLocations());

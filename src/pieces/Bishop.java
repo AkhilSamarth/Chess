@@ -14,7 +14,6 @@ public class Bishop extends Piece {
     @Override
     public void updateValidLocations(Piece[][] pieces) {
         ArrayList<Integer[]> locations = new ArrayList<>();
-        isGivingCheck = false;
 
         // loop through each of the four diagonals until an obstruction is reached
         int currentRow = row + 1;

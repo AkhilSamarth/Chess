@@ -25,7 +25,6 @@ public class Rook extends Piece {
     @Override
     public void updateValidLocations(Piece[][] pieces) {
         ArrayList<Integer[]> locations = new ArrayList<>();
-        isGivingCheck = false;
 
         // loop in each of the four directions until an obstruction is found
         // going right

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class King extends Piece {
 
     // used for castling
-    private boolean hasMoved = false, isChecked = false;
+    private boolean hasMoved = false;
 
     public boolean hasMoved() {
         return hasMoved;
@@ -15,13 +15,6 @@ public class King extends Piece {
         this.hasMoved = hasMoved;
     }
 
-    public boolean isChecked() {
-        return isChecked;
-    }
-
-    public void setChecked(boolean checked) {
-        isChecked = checked;
-    }
 
     public King(int row, int col, boolean isWhite) {
         super(row, col, isWhite);
@@ -54,7 +47,7 @@ public class King extends Piece {
         }
 
         // check if castling is possible
-        if (!hasMoved && !isChecked) {
+        if (!hasMoved) {
             boolean leftClear = true, rightClear = true;      // booleans to keep track of whether or not there's pieces between the king and the rook
             // check for clearance to the left, up to the rook
             for (int i = col - 1; i >= 1; i--) {

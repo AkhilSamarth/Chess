@@ -19,7 +19,7 @@ public abstract class Piece {
 
     protected BufferedImage icon, sourceImage;
     protected ArrayList<Integer[]> validLocations;
-    protected boolean isWhite, isGivingCheck = false;
+    protected boolean isWhite;
     protected int row, col;
 
     /**
@@ -47,10 +47,6 @@ public abstract class Piece {
 
     public boolean isWhite() {
         return isWhite;
-    }
-
-    public boolean isGivingCheck() {
-        return isGivingCheck;
     }
 
     public int getRow() {
@@ -174,12 +170,8 @@ public abstract class Piece {
     protected boolean addBishopRookLocation(Piece[][] pieces, ArrayList<Integer[]> locations, int row, int col) {
         locations.add(new Integer[]{row, col});
 
+        // check for obstruction
         if (pieces[row][col] != null) {
-            // update check status if needed
-            if (isPieceKing(pieces[row][col])) {
-                isGivingCheck = true;
-                ((King) pieces[row][col]).setChecked(true);
-            }
             return true;
         }
 

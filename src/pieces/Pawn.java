@@ -29,7 +29,6 @@ public class Pawn extends Piece {
     @Override
     public void updateValidLocations(Piece[][] pieces) {
         ArrayList<Integer[]> locations = new ArrayList<>();
-        isGivingCheck = false;
 
         // determine direction based on white and black
         if (isWhite) {
@@ -84,11 +83,6 @@ public class Pawn extends Piece {
      * @param col the column of the location being added
      */
     private void addAttackLocation(Piece[][] pieces, ArrayList<Integer[]> locations, int row, int col) {
-        // if king, update check status
-        if (isPieceKing(pieces[row][col])) {
-            isGivingCheck = true;
-            ((King) pieces[row][col]).setChecked(true);
-        }
         locations.add(new Integer[]{row, col});
     }
 }
